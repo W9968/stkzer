@@ -1,5 +1,7 @@
 import type { NextPage } from 'next'
+
 import Head from 'next/head'
+import { __s } from 'hooks/useSupa'
 
 const Home: NextPage = () => {
   return (
