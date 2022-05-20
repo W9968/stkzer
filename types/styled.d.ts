@@ -30,17 +30,16 @@ declare module 'styled-components' {
 /* Exporting an object called colors that is of type DefaultTheme. */
 export const colors: DefaultTheme = {
   primary: {
-    accent_0: '#fffffe',
-    accent_50: '#f9fafb',
-    accent_100: '#f3f4f6',
-    accent_200: '#e5e7eb',
-    accent_300: '#d1d5db',
-    accent_400: '#9ca3af',
-    accent_500: '#6b7280',
-    accent_600: '#4b5563',
-    accent_700: '#374151',
-    accent_800: '#1f2937',
-    accent_900: '#111827',
+    accent_50: '#fafafa',
+    accent_100: '#f4f4f5',
+    accent_200: '#e4e4e7',
+    accent_300: '#d4d4d8',
+    accent_400: '#a1a1aa',
+    accent_500: '#71717a',
+    accent_600: '#52525b',
+    accent_700: '#3f3f46',
+    accent_800: '#262626',
+    accent_900: '#18181b',
   },
 
   secondary: {},

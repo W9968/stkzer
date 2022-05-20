@@ -1,13 +1,16 @@
 import type { NextPage } from 'next'
 
 import Head from 'next/head'
-import { __s } from 'hooks/useSupa'
+import { useRouter } from 'next/router'
 
-const Home: NextPage = () => {
+const Slug: NextPage = () => {
+  const router = useRouter()
+  const { slug } = router.query
+
   return (
     <>
       <Head>
-        <title>Watchlist</title>
+        <title style={{ textTransform: 'capitalize' }}>{slug}</title>
         <meta
           name='description'
           content='my watchlist that i use to store data of things i watched'
@@ -18,4 +21,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Slug
