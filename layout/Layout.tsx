@@ -1,14 +1,35 @@
+import { useRouter } from 'next/router'
 import { Header } from 'components/export'
-import { FC, ReactElement } from 'react'
-import { Content, SideBar, Wrapper } from 'styles/layout.module'
+import { FC, ReactElement, useEffect, useState } from 'react'
+
+import {
+  Content,
+  ContentBody,
+  ContentHeader,
+  SideBar,
+  Wrapper,
+} from 'styles/layout.module'
 
 const Layout: FC<prop> = ({ children }) => {
+  const router = useRouter()
+  const [path, setPath] = useState<string>('')
+
+  useEffect(() => {
+    if (router.pathname === '/') return setPath('Home')
+    else setPath(router.pathname.slice(1))
+  }, [router])
+
   return (
     <Wrapper>
       <SideBar>
         <Header />
       </SideBar>
-      <Content>{children}</Content>
+      <Content>
+        <ContentHeader>
+          <p>{path}</p>
+        </ContentHeader>
+        <ContentBody>{children}</ContentBody>
+      </Content>
     </Wrapper>
   )
 }

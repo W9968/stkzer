@@ -5,7 +5,6 @@ import { DefaultTheme } from 'styled-components'
 declare module 'styled-components' {
   interface DefaultTheme {
     primary: {
-      accent_0: string
       accent_50: string
       accent_100: string
       accent_200: string
@@ -17,7 +16,12 @@ declare module 'styled-components' {
       accent_800: string
       accent_900: string
     }
-    secondary: {}
+    secondary: {
+      accent_200: string
+      accent_300: string
+      accent_500: string
+    }
+
     error: {
       accent_500: string
     }
@@ -30,7 +34,7 @@ declare module 'styled-components' {
 /* Exporting an object called colors that is of type DefaultTheme. */
 export const colors: DefaultTheme = {
   primary: {
-    accent_50: '#fafafa',
+    accent_50: '#fffffe',
     accent_100: '#f4f4f5',
     accent_200: '#e4e4e7',
     accent_300: '#d4d4d8',
@@ -42,7 +46,11 @@ export const colors: DefaultTheme = {
     accent_900: '#18181b',
   },
 
-  secondary: {},
+  secondary: {
+    accent_200: '#ddd6fe',
+    accent_300: '#c4b5fd',
+    accent_500: '#8b5cf6',
+  },
 
   error: {
     accent_500: '#ef4444',

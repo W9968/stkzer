@@ -1,6 +1,6 @@
-import { __s } from 'hooks/useSupa'
+import { supabase } from 'hooks/useSupa'
 import { category } from 'types/data.d'
-import { initialContext, initialStore } from 'types/context.d'
+import { initialContext, initialStore } from 'types/context'
 import {
   useState,
   createContext,
@@ -19,8 +19,13 @@ const _DataContext: FC<prop> = ({ children }) => {
   )
 
   async function fetchFromPool() {
-    const { data } = await __s.from('category').select()
+    const { data } = await supabase.from('category').select()
     data && setCategories(data)
+  }
+
+  async function deleteFromPool(query: string, key: number) {
+    await supabase.from(query).delete().match({ id: key })
+    setCategories(categories.filter((el) => el.id === key))
   }
 
   useEffect(() => {
@@ -28,7 +33,7 @@ const _DataContext: FC<prop> = ({ children }) => {
   }, []) // eslint-disable-line
 
   return (
-    <DataContext.Provider value={{ categories }}>
+    <DataContext.Provider value={{ categories, fetchFromPool, deleteFromPool }}>
       {children}
     </DataContext.Provider>
   )
