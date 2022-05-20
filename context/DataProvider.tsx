@@ -23,9 +23,14 @@ const _DataContext: FC<prop> = ({ children }) => {
     data && setCategories(data)
   }
 
+  async function insertIntoPool(query: string, request: string) {
+    const { data } = await supabase.from(query).insert([{ name: request }])
+    data && setCategories([...categories, ...data])
+  }
+
   async function deleteFromPool(query: string, key: number) {
     await supabase.from(query).delete().match({ id: key })
-    setCategories(categories.filter((el) => el.id === key))
+    setCategories(categories.filter((el) => el.id !== key))
   }
 
   useEffect(() => {
@@ -33,7 +38,8 @@ const _DataContext: FC<prop> = ({ children }) => {
   }, []) // eslint-disable-line
 
   return (
-    <DataContext.Provider value={{ categories, fetchFromPool, deleteFromPool }}>
+    <DataContext.Provider
+      value={{ categories, fetchFromPool, insertIntoPool, deleteFromPool }}>
       {children}
     </DataContext.Provider>
   )

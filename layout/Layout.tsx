@@ -1,35 +1,34 @@
-import { useRouter } from 'next/router'
-import { Header } from 'components/export'
-import { FC, ReactElement, useEffect, useState } from 'react'
+import { TiDocumentAdd } from 'react-icons/ti'
+import { AnimatePresence } from 'framer-motion'
+import { FC, ReactElement, useState } from 'react'
 
 import {
-  Content,
-  ContentBody,
-  ContentHeader,
-  SideBar,
+  AddingSection,
+  Masonry,
+  Preview,
+  SideNav,
   Wrapper,
 } from 'styles/layout.module'
 
 const Layout: FC<prop> = ({ children }) => {
-  const router = useRouter()
-  const [path, setPath] = useState<string>('')
-
-  useEffect(() => {
-    if (router.pathname === '/') return setPath('Home')
-    else setPath(router.pathname.slice(1))
-  }, [router])
+  const [active, setActive] = useState<boolean>(false)
 
   return (
     <Wrapper>
-      <SideBar>
-        <Header />
-      </SideBar>
-      <Content>
-        <ContentHeader>
-          <p>{path}</p>
-        </ContentHeader>
-        <ContentBody>{children}</ContentBody>
-      </Content>
+      <SideNav state={active} onClick={() => setActive(!active)}>
+        <TiDocumentAdd size={26} />
+      </SideNav>
+      <AnimatePresence>
+        {active && (
+          <AddingSection
+            initial={{ width: 0 }}
+            animate={{ width: 'calc(100vw /2.5)' }}
+            exit={{ width: 0 }}
+            transition={{ type: 'tween', duration: 0.5 }}></AddingSection>
+        )}
+      </AnimatePresence>
+      <Preview></Preview>
+      <Masonry>{children}</Masonry>
     </Wrapper>
   )
 }
