@@ -1,5 +1,5 @@
 import { list } from 'types/data'
-import { Grid } from 'components/export'
+import { Grid, NavBar } from 'components/export'
 import { TiDocumentAdd } from 'react-icons/ti'
 import { AnimatePresence } from 'framer-motion'
 import { FC, ReactElement, useState } from 'react'
@@ -32,7 +32,10 @@ const Layout: FC<prop> = ({ children }) => {
             transition={{ type: 'tween', duration: 0.5 }}></AddingSection>
         )}
       </AnimatePresence>
-      <Preview>{children}</Preview>
+      <Preview>
+        <NavBar />
+        {children}
+      </Preview>
       <Masonry>
         {lists.map((elem: list, index: number) => {
           return (

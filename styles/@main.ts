@@ -18,7 +18,7 @@ export const MainStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: ${({ theme }) => theme.primary.accent_50};
-    background: ${({ theme }) => theme.primary.accent_800};
+    background: ${({ theme }) => theme.primary.accent_900};
   }
 
     /* width */

@@ -18,11 +18,13 @@ const _DataContext: FC<prop> = ({ children }) => {
     initialStore.categories
   )
   const [lists, setLists] = useState<list[]>(initialStore.lists)
+  const [loading, setLoading] = useState<boolean>(initialStore.loading)
 
   async function fetchFromPool(query: string) {
     const { data } = await supabase.from(query).select()
     if (query === 'list') data && setLists(data)
     else if (query === 'category') data && setCategories(data)
+    setLoading(true)
   }
 
   async function insertIntoPool(query: string, request: string) {
@@ -36,6 +38,7 @@ const _DataContext: FC<prop> = ({ children }) => {
   }
 
   useEffect(() => {
+    fetchFromPool('category')
     fetchFromPool('list')
   }, []) // eslint-disable-line
 
@@ -43,6 +46,7 @@ const _DataContext: FC<prop> = ({ children }) => {
     <DataContext.Provider
       value={{
         lists,
+        loading,
         categories,
         fetchFromPool,
         insertIntoPool,

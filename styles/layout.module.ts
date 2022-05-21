@@ -20,6 +20,7 @@ export const Masonry = styled(motion.section)`
 `
 
 export const Preview = styled(motion.section)`
+  padding: 1rem;
   min-width: calc(100vw / 2);
 `
 
@@ -47,5 +48,5 @@ export const AddingSection = styled(motion.section)`
   z-index: 99;
   height: 100%;
   position: fixed;
-  background: ${({ theme }) => theme.primary.accent_900};
+  background: ${({ theme }) => theme.primary.accent_800};
 `
