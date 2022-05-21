@@ -20,7 +20,7 @@ export const Masonry = styled(motion.section)`
 `
 
 export const Preview = styled(motion.section)`
-  min-width: calc(100vw / 2.5);
+  min-width: calc(100vw / 2);
 `
 
 export const SideNav = styled.nav<SideProps>`

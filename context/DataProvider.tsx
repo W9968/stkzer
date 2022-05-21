@@ -1,5 +1,5 @@
 import { supabase } from 'hooks/useSupa'
-import { category } from 'types/data.d'
+import { category, list } from 'types/data.d'
 import { initialContext, initialStore } from 'types/context'
 import {
   useState,
@@ -17,10 +17,12 @@ const _DataContext: FC<prop> = ({ children }) => {
   const [categories, setCategories] = useState<category[]>(
     initialStore.categories
   )
+  const [lists, setLists] = useState<list[]>(initialStore.lists)
 
-  async function fetchFromPool() {
-    const { data } = await supabase.from('category').select()
-    data && setCategories(data)
+  async function fetchFromPool(query: string) {
+    const { data } = await supabase.from(query).select()
+    if (query === 'list') data && setLists(data)
+    else if (query === 'category') data && setCategories(data)
   }
 
   async function insertIntoPool(query: string, request: string) {
@@ -34,12 +36,18 @@ const _DataContext: FC<prop> = ({ children }) => {
   }
 
   useEffect(() => {
-    fetchFromPool()
+    fetchFromPool('list')
   }, []) // eslint-disable-line
 
   return (
     <DataContext.Provider
-      value={{ categories, fetchFromPool, insertIntoPool, deleteFromPool }}>
+      value={{
+        lists,
+        categories,
+        fetchFromPool,
+        insertIntoPool,
+        deleteFromPool,
+      }}>
       {children}
     </DataContext.Provider>
   )

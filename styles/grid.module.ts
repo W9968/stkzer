@@ -36,9 +36,10 @@ export const Overlay = styled.div`
 
   > p {
     :first-child {
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 600;
       letter-spacing: 1px;
+      text-transform: capitalize;
     }
 
     :last-child {
