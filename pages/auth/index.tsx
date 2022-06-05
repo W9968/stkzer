@@ -15,7 +15,9 @@ const Index: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <WrapperLayout>
-        <FormContainer>
+        <FormContainer
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}>
           <FromHeader>sign in</FromHeader>
           <FormParag>
             you will recieve an invite link once you send your email.
