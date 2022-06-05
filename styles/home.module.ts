@@ -12,7 +12,7 @@ export const HomeContaienr = styled(motion.div)`
 `
 
 export const HomeTitle = styled.p`
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 800;
   margin-bottom: 14px;
   text-align: center;
@@ -20,7 +20,7 @@ export const HomeTitle = styled.p`
 `
 
 export const HomeParag = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   margin-bottom: 14px;
   color: ${({ theme }) => theme.primary.accent_500};
@@ -30,7 +30,7 @@ export const HomeImageMockup = styled.div`
   left: 50%;
   top: 100%;
   z-index: 1;
-  width: 80%;
+  width: 1200px;
   height: 400px;
   position: absolute;
   transform: translate(-50%, -100%);
@@ -38,7 +38,11 @@ export const HomeImageMockup = styled.div`
   background-repeat: no-repeat;
   background-size: 100%;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+
+  @media (max-width: 1100px) {
     display: none;
   }
 `
