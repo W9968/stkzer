@@ -20,8 +20,8 @@ export const Clickable = styled.button`
 
   &:disabled {
     cursor: wait;
-    background: ${({ theme }) => theme.secondary.accent_300};
-    border: 2px solid ${({ theme }) => theme.secondary.accent_300};
+    background: ${({ theme }) => theme.secondary.accent_400};
+    border: 2px solid ${({ theme }) => theme.secondary.accent_400};
   }
 `
 

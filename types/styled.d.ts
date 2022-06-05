@@ -19,6 +19,7 @@ declare module 'styled-components' {
     secondary: {
       accent_200: string
       accent_300: string
+      accent_400: string
       accent_500: string
       accent_700: string
       accent_800: string
@@ -53,6 +54,7 @@ export const colors: DefaultTheme = {
   secondary: {
     accent_200: '#bfdbfe',
     accent_300: '#93c5fd',
+    accent_400: '#60a5fa',
     accent_500: '#3b82f6',
     accent_700: '#1d4ed8',
     accent_800: '#1e40af',
