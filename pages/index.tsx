@@ -1,7 +1,14 @@
+import { Button } from 'components/export'
 import WrapperLayout from 'layout/Wrapper.layout'
 import type { NextPage } from 'next'
 
 import Head from 'next/head'
+import {
+  HomeContaienr,
+  HomeParag,
+  HomeTitle,
+  HomeImageMockup,
+} from 'styles/home.module'
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +22,15 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <WrapperLayout>
-        <p>hello</p>
+        <HomeContaienr initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <HomeTitle>stack what you watch</HomeTitle>
+          <HomeParag>
+            No need to worry about losing your watchlist, start saving with us,
+            a one universal place to keep track of what you watch.
+          </HomeParag>
+          <Button title={'get started'} />
+          <HomeImageMockup />
+        </HomeContaienr>
       </WrapperLayout>
     </>
   )
