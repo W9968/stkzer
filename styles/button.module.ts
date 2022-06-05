@@ -24,3 +24,17 @@ export const Clickable = styled.button`
     border: 2px solid ${({ theme }) => theme.secondary.accent_300};
   }
 `
+
+/**
+ * small header button
+ */
+export const HomeButton = styled.a`
+  height: 32px;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  text-transform: capitalize;
+  color: ${({ theme }) => theme.primary.accent_400};
+`

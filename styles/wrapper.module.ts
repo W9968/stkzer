@@ -1,14 +1,11 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.main`
-  top: 0;
-  left: 0;
   width: 100%;
   display: flex;
   padding: 1rem;
   max-width: 100%;
-  min-height: 100%;
-  position: absolute;
+  min-height: 100vh;
   justify-content: center;
   background-image: linear-gradient(
     120deg,
@@ -27,5 +24,23 @@ export const Container = styled.section`
 
   @media (max-width: 1400px) {
     width: 100%;
+  }
+`
+
+export const Column = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &:first-child {
+    height: 62px;
+    padding: 0rem 1rem;
+    justify-content: space-between;
+  }
+
+  &:last-child {
+    flex: 1;
+    padding-bottom: 15%;
+    justify-content: center;
   }
 `
