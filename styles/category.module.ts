@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const CategoryPageContainer = styled.div`
@@ -18,11 +19,12 @@ export const CategoryForm = styled.form`
 
 export const CategoryData = styled.div`
   margin-top: 62px;
+  overflow: hidden;
   border-radius: 5px;
   background: ${({ theme }) => theme.primary.accent_800};
 `
 
-export const DataRow = styled.div`
+export const DataRow = styled(motion.div)`
   display: flex;
   height: 48px;
   padding: 10px 16px;
@@ -70,4 +72,13 @@ export const Action = styled.div`
       background: ${({ theme }) => theme.error.accent_500};
     }
   }
+`
+
+export const ErrorMessage = styled(motion.p)`
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background: ${({ theme }) => theme.error.accent_500};
 `
