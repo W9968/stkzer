@@ -7,7 +7,7 @@ const Button: FC<prop & Record<string, any>> = ({
   ...rest
 }) => {
   return (
-    <Clickable disabled={status} {...rest}>
+    <Clickable type={'button'} disabled={status} {...rest}>
       {title}
     </Clickable>
   )
