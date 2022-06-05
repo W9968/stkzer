@@ -58,12 +58,6 @@ export const AdminWrapper = styled.main`
   flex-direction: column;
 `
 
-export const AdminContent = styled.aside`
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-`
-
 export const AdminHeader = styled.header`
   width: 100%;
   height: 62px;
@@ -75,4 +69,7 @@ export const AdminHeader = styled.header`
 
 export const AdminContainer = styled.section`
   flex: 1;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
 `

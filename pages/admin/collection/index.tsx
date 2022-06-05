@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import type { NextPage } from 'next'
+
 import AdminLayout from 'layout/Admin.layout'
 
 const Home: NextPage = () => {
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <AdminLayout>
-        <p>fsdf</p>
+        <p>fzef</p>
       </AdminLayout>
     </>
   )

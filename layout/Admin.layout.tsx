@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FC, ReactElement, ReactNode, useEffect, useState } from 'react'
+import { FC, ReactElement, ReactNode } from 'react'
 
 import {
   AdminContainer,
-  AdminContent,
   AdminHeader,
   AdminWrapper,
 } from 'styles/wrapper.module'
@@ -13,7 +12,6 @@ import { BiCollection, BiCategoryAlt } from 'react-icons/bi'
 
 const AdminLayout: FC<prop> = ({ children }) => {
   const route = useRouter()
-  const [active, setActive] = useState<boolean>(false)
 
   return (
     <AdminWrapper>
@@ -31,9 +29,7 @@ const AdminLayout: FC<prop> = ({ children }) => {
           </Link>
         ))}
       </AdminHeader>
-      <AdminContent>
-        <AdminContainer>{children}</AdminContainer>
-      </AdminContent>
+      <AdminContainer>{children}</AdminContainer>
     </AdminWrapper>
   )
 }

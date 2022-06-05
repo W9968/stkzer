@@ -1,7 +1,6 @@
 export interface category {
-  id: number
-  name: string
-  created_at: string
+  category_name: string
+  category_created_at: string
 }
 
 export interface list {
