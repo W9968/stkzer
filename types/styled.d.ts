@@ -20,6 +20,9 @@ declare module 'styled-components' {
       accent_200: string
       accent_300: string
       accent_500: string
+      accent_700: string
+      accent_800: string
+      accent_900: string
     }
 
     error: {
@@ -43,14 +46,17 @@ export const colors: DefaultTheme = {
     accent_500: '#71717a',
     accent_600: '#52525b',
     accent_700: '#3f3f46',
-    accent_800: '#1f1f1f',
-    accent_900: '#141414',
+    accent_800: '#27272a',
+    accent_900: '#18181b',
   },
 
   secondary: {
-    accent_200: '#ddd6fe',
-    accent_300: '#c4b5fd',
-    accent_500: '#8b5cf6',
+    accent_200: '#bfdbfe',
+    accent_300: '#93c5fd',
+    accent_500: '#3b82f6',
+    accent_700: '#1d4ed8',
+    accent_800: '#1e40af',
+    accent_900: '#1e3a8a',
   },
 
   error: {

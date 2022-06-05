@@ -2,10 +2,7 @@ import type { NextPage } from 'next'
 
 import Head from 'next/head'
 
-import { __store } from 'context/DataProvider'
-
 const Home: NextPage = () => {
-  const { lists } = __store()
   return (
     <>
       <Head>
