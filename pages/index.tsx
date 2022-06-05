@@ -1,8 +1,10 @@
-import { Button } from 'components/export'
-import WrapperLayout from 'layout/Wrapper.layout'
+import Link from 'next/link'
+import Head from 'next/head'
 import type { NextPage } from 'next'
 
-import Head from 'next/head'
+import { Button } from 'components/export'
+import WrapperLayout from 'layout/Wrapper.layout'
+
 import {
   HomeContaienr,
   HomeParag,
@@ -28,7 +30,9 @@ const Home: NextPage = () => {
             No need to worry about losing your watchlist, start saving with us,
             a one universal place to keep track of what you watch.
           </HomeParag>
-          <Button title={'get started'} />
+          <Link href={'/admin'} passHref>
+            <Button title={'get started'} />
+          </Link>
           <HomeImageMockup
             initial={{ opacity: 0, y: '10%' }}
             animate={{ opacity: 1, y: '0%' }}

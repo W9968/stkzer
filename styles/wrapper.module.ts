@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+/**
+ * normal layout
+ */
 export const Wrapper = styled.main`
   width: 100%;
   display: flex;
@@ -42,4 +45,34 @@ export const Column = styled.div`
     flex: 1;
     justify-content: center;
   }
+`
+
+/**
+ * admin layout
+ */
+export const AdminWrapper = styled.main`
+  width: 100%;
+  display: flex;
+  max-width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+`
+
+export const AdminContent = styled.aside`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+`
+
+export const AdminHeader = styled.header`
+  width: 100%;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  background: ${({ theme }) => theme.primary.accent_800};
+  border-bottom: 2px solid ${({ theme }) => theme.primary.accent_900};
+`
+
+export const AdminContainer = styled.section`
+  flex: 1;
 `
