@@ -51,14 +51,17 @@ export const Action = styled.div`
   grid-gap: 10px;
   grid-template-columns: auto auto;
 
-  & > div {
+  & > button {
     width: 32px;
+    border: none;
     height: 32px;
     display: flex;
     cursor: pointer;
+    background: none;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
+    color: ${({ theme }) => theme.primary.accent_100};
 
     &:first-child {
       background: ${({ theme }) => theme.secondary.accent_500};

@@ -72,12 +72,26 @@ const Home: NextPage<prop> = ({ data }) => {
               <DataRow key={el.category_name}>
                 <p>{el.category_name}</p>
                 <Action>
-                  <div>
+                  <button>
                     <BiEdit size={24} />
-                  </div>
-                  <div>
+                  </button>
+                  <button
+                    onClick={async () => {
+                      const { data, error } = await supabase
+                        .from('CATEGORY_TABLE')
+                        .delete()
+                        .match({ category_name: el.category_name })
+                      if (error === null) {
+                        setPayload(
+                          payload.filter(
+                            (el: category) =>
+                              el.category_name !== data[0].category_name
+                          )
+                        )
+                      }
+                    }}>
                     <BiTrashAlt size={24} />
-                  </div>
+                  </button>
                 </Action>
               </DataRow>
             ))}
