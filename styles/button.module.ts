@@ -6,6 +6,7 @@ export const Clickable = styled.button`
   outline: none;
   cursor: pointer;
   margin: 10px 0px;
+  padding: 0px 32px;
   border-radius: 5px;
   background: transparent;
   text-transform: capitalize;

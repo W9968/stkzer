@@ -5,6 +5,7 @@ export const FormContainer = styled(motion.div)`
   width: 300px;
   display: grid;
   max-width: 300px;
+  padding-bottom: 15%;
   grid-template-columns: auto;
 `
 

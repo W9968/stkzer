@@ -40,7 +40,6 @@ export const Column = styled.div`
 
   &:last-child {
     flex: 1;
-    padding-bottom: 15%;
     justify-content: center;
   }
 `
