@@ -90,18 +90,14 @@ const Home: NextPage<prop> = ({ data }) => {
               <p>Category</p>
               <p>action</p>
             </DataRow>
-            <AnimatePresence>
-              {payload.length === 0 ? (
-                <DataRow
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}>
-                  <p>no data</p>
-                </DataRow>
-              ) : (
-                payload.map((el) => (
+            {payload.length === 0 ? (
+              <DataRow>
+                <p>no data</p>
+              </DataRow>
+            ) : (
+              payload.map((el) => (
+                <AnimatePresence key={el.category_name}>
                   <DataRow
-                    key={el.category_name}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: 50 }}
@@ -130,9 +126,9 @@ const Home: NextPage<prop> = ({ data }) => {
                       </button>
                     </Action>
                   </DataRow>
-                ))
-              )}
-            </AnimatePresence>
+                </AnimatePresence>
+              ))
+            )}
           </CategoryData>
         </CategoryPageContainer>
       </AdminLayout>
