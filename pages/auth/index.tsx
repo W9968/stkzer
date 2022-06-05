@@ -4,7 +4,7 @@ import type { NextPage } from 'next'
 import WrapperLayout from 'layout/Wrapper.layout'
 import { Button, Input } from 'components/export'
 
-import { FromHeader, FormContainer } from 'styles/auth.module'
+import { FromHeader, FormContainer, FormParag } from 'styles/auth.module'
 
 const Index: NextPage = () => {
   return (
@@ -17,8 +17,11 @@ const Index: NextPage = () => {
       <WrapperLayout>
         <FormContainer>
           <FromHeader>sign in</FromHeader>
+          <FormParag>
+            you will recieve an invite link once you send your email.
+          </FormParag>
           <Input type={'email'} placeholer={'email'} />
-          <Button title={'send'} />
+          <Button title={'get link'} />
         </FormContainer>
       </WrapperLayout>
     </>
