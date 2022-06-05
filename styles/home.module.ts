@@ -15,7 +15,7 @@ export const HomeContaienr = styled(motion.div)`
 
 export const HomeTitle = styled.p`
   font-weight: 800;
-  margin-top: 250px;
+  margin-top: 200px;
   font-size: 1.7rem;
   text-align: center;
   margin-bottom: 14px;
