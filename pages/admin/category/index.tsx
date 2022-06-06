@@ -8,7 +8,7 @@ import AdminLayout from 'layout/Admin.layout'
 import { category } from 'types/data.d'
 import { supabase } from 'hooks/useSupa'
 import { Button, Input } from 'components/export'
-import { BiTrashAlt, BiEditAlt } from 'react-icons/bi'
+import { BiTrashAlt, BiEditAlt, BiCheck } from 'react-icons/bi'
 
 import {
   Action,
@@ -21,6 +21,7 @@ import {
 
 const Home: NextPage<prop> = ({ data }) => {
   const [value, setValue] = useState<string>('')
+  const [edit, setEdits] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
   const [payload, setPayload] = useState<category[]>(data)
 
@@ -96,37 +97,37 @@ const Home: NextPage<prop> = ({ data }) => {
               </DataRow>
             ) : (
               payload.map((el) => (
-                <AnimatePresence key={el.category_name}>
-                  <DataRow
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, x: 50 }}
-                    transition={{ type: 'just', delay: 0.2 }}>
-                    <p>{el.category_name}</p>
-                    <Action>
-                      <button>
-                        <BiEditAlt size={24} />
-                      </button>
-                      <button
-                        onClick={async () => {
-                          const { data, error } = await supabase
-                            .from('CATEGORY_TABLE')
-                            .delete()
-                            .match({ category_name: el.category_name })
-                          if (error === null) {
-                            setPayload(
-                              payload.filter(
-                                (el: category) =>
-                                  el.category_name !== data[0].category_name
-                              )
+                <DataRow
+                  key={el.category_name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: 'just', delay: 0.2 }}>
+                  <p>{el.category_name}</p>
+
+                  <Action>
+                    <button onClick={() => setEdits(true)}>
+                      <BiEditAlt size={24} />
+                    </button>
+
+                    <button
+                      onClick={async () => {
+                        const { data, error } = await supabase
+                          .from('CATEGORY_TABLE')
+                          .delete()
+                          .match({ category_name: el.category_name })
+                        if (error === null) {
+                          setPayload(
+                            payload.filter(
+                              (el: category) =>
+                                el.category_name !== data[0].category_name
                             )
-                          }
-                        }}>
-                        <BiTrashAlt size={24} />
-                      </button>
-                    </Action>
-                  </DataRow>
-                </AnimatePresence>
+                          )
+                        }
+                      }}>
+                      <BiTrashAlt size={24} />
+                    </button>
+                  </Action>
+                </DataRow>
               ))
             )}
           </CategoryData>

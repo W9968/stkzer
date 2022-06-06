@@ -21,17 +21,19 @@ export const CategoryData = styled.div`
   margin-top: 62px;
   overflow: hidden;
   border-radius: 5px;
-  background: ${({ theme }) => theme.primary.accent_800};
+
+  border: 2px solid ${({ theme }) => theme.primary.accent_800};
 `
 
 export const DataRow = styled(motion.div)`
   display: flex;
-  height: 48px;
+  height: 42px;
   padding: 10px 16px;
   align-items: center;
   justify-content: space-between;
 
   &:first-child {
+    background: ${({ theme }) => theme.primary.accent_800};
     > p {
       font-weight: 600;
       text-transform: uppercase;
@@ -40,7 +42,7 @@ export const DataRow = styled(motion.div)`
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid ${({ theme }) => theme.primary.accent_900};
+    border-bottom: 1px solid ${({ theme }) => theme.primary.accent_800};
   }
 
   & > p {
@@ -54,9 +56,9 @@ export const Action = styled.div`
   grid-template-columns: auto auto;
 
   & > button {
-    width: 32px;
+    width: 28px;
     border: none;
-    height: 32px;
+    height: 28px;
     display: flex;
     cursor: pointer;
     background: none;
