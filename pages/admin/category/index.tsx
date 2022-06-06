@@ -7,7 +7,7 @@ import AdminLayout from 'layout/Admin.layout'
 
 import { category } from 'types/data.d'
 import { supabase } from 'hooks/useSupa'
-import { Button, Input } from 'components/export'
+import { Button, Input, Modal } from 'components/export'
 import { BiTrashAlt, BiEditAlt, BiCheck } from 'react-icons/bi'
 
 import {
@@ -21,9 +21,9 @@ import {
 
 const Home: NextPage<prop> = ({ data }) => {
   const [value, setValue] = useState<string>('')
-  const [edit, setEdits] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
   const [payload, setPayload] = useState<category[]>(data)
+  const [isModalActive, setModalActive] = useState<boolean>(false)
 
   return (
     <>
@@ -86,6 +86,7 @@ const Home: NextPage<prop> = ({ data }) => {
               }}
             />
           </CategoryForm>
+
           <CategoryData>
             <DataRow>
               <p>Category</p>
@@ -105,10 +106,44 @@ const Home: NextPage<prop> = ({ data }) => {
                   <p>{el.category_name}</p>
 
                   <Action>
-                    <button onClick={() => setEdits(true)}>
+                    <button onClick={() => setModalActive(true)}>
                       <BiEditAlt size={24} />
                     </button>
-
+                    <AnimatePresence>
+                      {isModalActive && (
+                        <Modal
+                          title={'edit'}
+                          open={isModalActive}
+                          onOpen={setModalActive}
+                          onClick={async () => {
+                            const { data, error } = await supabase
+                              .from('CATEGORY_TABLE')
+                              .update({ category_name: value })
+                              .match({ category_name: el.category_name })
+                            if (error === null) {
+                              setValue('')
+                              setPayload([
+                                ...payload.filter(
+                                  (elem) =>
+                                    elem.category_name != el.category_name
+                                ),
+                                ...data,
+                              ])
+                              setModalActive(false)
+                            }
+                          }}>
+                          <Input
+                            type={'text'}
+                            label={'edit category'}
+                            placeholer={'category'}
+                            defaultValue={el.category_name}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                              setValue(e.target.value)
+                            }
+                          />
+                        </Modal>
+                      )}
+                    </AnimatePresence>
                     <button
                       onClick={async () => {
                         const { data, error } = await supabase
