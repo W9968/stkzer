@@ -15,7 +15,7 @@ export type user = {
 interface storeInterface {
   currentUser: user
   subscirebdUser: () => void
-  signIn: (email: string) => void
+  signIn: (email: string, password: string) => void
   logout: () => void
 }
 
@@ -55,9 +55,10 @@ export default function AuthContext({ children }: contextProp) {
    * @param {string} email
    * @returns {void}
    */
-  const signIn = async function (email: string) {
+  const signIn = async function (email: string, password: string) {
     const { user, error } = await supabase.auth.signIn({
       email: email,
+      password: password,
     })
     console.log('user => ', user)
     console.log('error => ', error)

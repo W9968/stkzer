@@ -6,15 +6,24 @@ import { __auth } from 'context/AuthContext'
 import WrapperLayout from 'layout/Wrapper.layout'
 import { Button, Input } from 'components/export'
 
-import { supabase } from 'hooks/useSupa'
+import { useRouter } from 'next/router'
 import { ChangeEvent, useLayoutEffect, useState } from 'react'
 import { FromHeader, FormContainer, FormParag } from 'styles/auth.module'
-import { useRouter } from 'next/router'
 
 const Index: NextPage = () => {
   const router = useRouter()
   const { signIn, currentUser } = __auth()
-  const [email, setEmail] = useState<string>('')
+  const [form, setForm] = useState<{ email: string; password: string }>({
+    email: '',
+    password: '',
+  })
+
+  let handleFormChange = function (
+    binding: string,
+    event: ChangeEvent<HTMLInputElement>
+  ) {
+    setForm({ ...form, [binding]: event.target.value })
+  }
 
   useLayoutEffect(() => {
     if (
@@ -42,13 +51,24 @@ const Index: NextPage = () => {
           </FormParag>
           <Input
             type={'email'}
-            value={email}
+            value={form.email}
             placeholer={'email'}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
+              handleFormChange('email', e)
             }
           />
-          <Button title={'get link'} onClick={() => signIn(email)} />
+          <Input
+            type={'email'}
+            value={form.password}
+            placeholer={'email'}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              handleFormChange('password', e)
+            }
+          />
+          <Button
+            title={'get link'}
+            onClick={() => signIn(form.email, form.password)}
+          />
         </FormContainer>
       </WrapperLayout>
     </>
