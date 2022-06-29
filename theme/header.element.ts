@@ -13,6 +13,7 @@ export const StyledHeader = styled.div`
 `
 
 export const Anchor = styled.button`
+  display: flex;
   border: none;
   outline: none;
   margin: 0 10px;
@@ -20,6 +21,8 @@ export const Anchor = styled.button`
   font-size: 1rem;
   font-weight: 500;
   background: none;
+  align-items: center;
+  justify-content: center;
   text-transform: capitalize;
   color: ${({ theme }) => theme.palette.accent_300};
 `

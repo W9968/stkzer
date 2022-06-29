@@ -11,8 +11,13 @@ import {
   HeadingParag,
   HeadingTitle,
 } from 'theme/banner.element'
+import { __auth } from 'context/AuthProvider'
 
 const Home: NextPage = () => {
+  const { currentUser } = __auth()
+
+  // console.log(currentUser)
+
   return (
     <>
       <Head>
@@ -50,6 +55,7 @@ const Home: NextPage = () => {
             }}
             viewport={{ once: true }}>
             <Image
+              priority
               width={425}
               height={450}
               src={'/svg/banner.svg'}

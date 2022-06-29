@@ -1,32 +1,28 @@
-import Logo from 'modules/logo/Logo'
-import Link from 'next/link'
 import { FC } from 'react'
+import Logo from 'modules/logo/Logo'
+import { __auth } from 'context/AuthProvider'
+import Profile from 'modules/button/Profile'
 import { Anchor, StyledHeader } from 'theme/header.element'
 
 const Header: FC = function () {
+  const { isLoaggedIn, login, logout, currentUser } = __auth()
+
+  console.log(currentUser)
+
   return (
     <StyledHeader>
       <Logo />
       <div>
-        {links.map((el, key) => (
-          <Link key={key} href={el.path} passHref>
-            <Anchor>{el.name}</Anchor>
-          </Link>
-        ))}
+        {isLoaggedIn ? (
+          <Profile />
+        ) : (
+          // <Link href={'/auth'} passHref>
+          <Anchor onClick={() => login('github')}>sign in</Anchor>
+          // </Link>
+        )}
       </div>
     </StyledHeader>
   )
 }
-
-const links = [
-  {
-    name: 'sign in',
-    path: '/auth',
-  },
-  {
-    name: 'contact me',
-    path: '/contact',
-  },
-]
 
 export default Header
