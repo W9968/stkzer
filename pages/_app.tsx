@@ -1,17 +1,16 @@
 import type { AppProps } from 'next/app'
 
-import { colors } from 'types/styled.d'
-import { MainStyle } from 'styles/@main'
-import AuthContext from 'context/AuthContext'
+import { theme, DesignTheme } from 'design/@theme'
 import { ThemeProvider } from 'styled-components'
+import MainLayout from 'layout/Main.layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={colors}>
-      <MainStyle />
-      <AuthContext>
+    <ThemeProvider theme={theme}>
+      <DesignTheme />
+      <MainLayout>
         <Component {...pageProps} />
-      </AuthContext>
+      </MainLayout>
     </ThemeProvider>
   )
 }

@@ -6,15 +6,12 @@ import Document, {
   DocumentContext,
   DocumentInitialProps,
 } from 'next/document'
+import { Fragment } from 'react'
 
 import { ServerStyleSheet } from 'styled-components'
 
 class MyDocument extends Document {
-  /**
-   * This function is called by Next.js when the page is rendered on the server. It's used to inject
-   * the stylesheet into the page to avoid server side rehydration.
-   * @param {DocumentContext} ctx - DocumentContext - The context of the document.
-   */
+  // SSR with stylesheet rehydration
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
@@ -31,10 +28,10 @@ class MyDocument extends Document {
       return {
         ...initialProps,
         styles: [
-          <>
+          <Fragment key={'initial-render'}>
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>,
+          </Fragment>,
         ],
       }
     } finally {
@@ -44,7 +41,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html>
         <Head>
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
