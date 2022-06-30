@@ -1,12 +1,14 @@
 import { FC } from 'react'
+import { useRouter } from 'next/router'
 import { __auth } from 'context/AuthProvider'
 import { StyledProfileButton } from 'theme/profile.element'
 
 const Profile: FC = function () {
-  const { currentUser, logout } = __auth()
+  const { push } = useRouter()
+  const { currentUser } = __auth()
 
   return (
-    <StyledProfileButton onClick={logout}>
+    <StyledProfileButton onClick={() => push('/profile')}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={currentUser.user_avatar}

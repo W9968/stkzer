@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { __supabase } from 'hooks/useSupa'
 import Spinner from 'modules/loading/Spinner'
 import { createContext, useContext, useState, ReactElement } from 'react'
+import { useRouter } from 'next/router'
 
 type ContexProp = {
   children: ReactElement
@@ -41,6 +42,8 @@ const AuthContext = createContext<StoreContext>(initialStoreValue)
 export const __auth = () => useContext(AuthContext)
 
 export default function AuthProvider({ children }: ContexProp) {
+  const { push } = useRouter()
+
   const [currentUser, setCurrentUser] = useState<User>(
     initialStoreValue.currentUser
   )
@@ -61,6 +64,8 @@ export default function AuthProvider({ children }: ContexProp) {
     })
     if (user) {
       setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
     }
     setLoading(false)
   }
@@ -72,15 +77,17 @@ export default function AuthProvider({ children }: ContexProp) {
   }
 
   const logout = async () => {
-    await __supabase.auth.signOut().then(() => {
-      setCurrentUser({
-        user_id: undefined,
-        user_email: undefined,
-        user_name: undefined,
-        user_avatar: undefined,
-      })
-      setLoggedIn(false)
+    const { error } = await __supabase.auth.signOut()
+    setCurrentUser({
+      user_id: undefined,
+      user_email: undefined,
+      user_name: undefined,
+      user_avatar: undefined,
     })
+    setLoggedIn(false)
+    if (!error) {
+      push('/')
+    }
   }
 
   useEffect(() => {

@@ -11,13 +11,8 @@ import {
   HeadingParag,
   HeadingTitle,
 } from 'theme/banner.element'
-import { __auth } from 'context/AuthProvider'
 
 const Home: NextPage = () => {
-  const { currentUser } = __auth()
-
-  // console.log(currentUser)
-
   return (
     <>
       <Head>

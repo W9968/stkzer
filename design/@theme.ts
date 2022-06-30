@@ -82,4 +82,24 @@ export const DesignTheme = createGlobalStyle`
     background: ${({ theme }) => theme.palette.accent_900};
   }  
 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    margin: 5px 5px;
+    background-color: none
+    
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: ${({ theme }) => theme.palette.accent_800};
+  }
+
+
 `
