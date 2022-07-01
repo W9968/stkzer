@@ -3,24 +3,26 @@ import { useRouter } from 'next/router'
 import type { FC, ReactNode } from 'react'
 import { __auth } from 'context/AuthProvider'
 
+import { BsDot } from 'react-icons/bs'
 import { BiExit, BiCog, BiStats, BiListUl } from 'react-icons/bi'
+
 import {
   AdminContainer,
   AdminContent,
+  AdminNavBar,
   AdminSideBar,
   AdminSideBarContent,
   AdminSideBarFooter,
   AdminSideBarLogo,
-  Content,
   LinksButtons,
-  Navbar,
 } from 'theme/app.element'
 
 import DropDown from 'modules/button/DropDown'
+import Profile from 'modules/button/Profile'
 
 const AdminLayout: FC<ComponentProp> = function ({ children }) {
   const { push, pathname } = useRouter()
-  const { isLoaggedIn, logout } = __auth()
+  const { isLoaggedIn, logout, currentUser } = __auth()
 
   if (!isLoaggedIn) {
     return <p>not logged in</p>
@@ -63,8 +65,44 @@ const AdminLayout: FC<ComponentProp> = function ({ children }) {
         </AdminSideBar>
         {/* content */}
         <AdminContent>
-          <Navbar></Navbar>
-          <Content>{children}</Content>
+          <AdminNavBar>
+            <div>
+              <p
+                style={{
+                  fontSize: 24,
+                  fontWeight: 500,
+                  marginBottom: 14,
+                  letterSpacing: -0.25,
+                  textTransform: 'capitalize',
+                }}>
+                Welcome Back, {currentUser.user_name?.split(' ')[0]}
+              </p>
+              <div
+                style={{
+                  display: 'flex',
+                  color: '#626262',
+                  alignItems: 'center',
+                }}>
+                <BsDot size={21} />
+                <p>{pathname.slice(1)}</p>
+              </div>
+            </div>
+            <div>
+              <Profile />
+              <p
+                style={{
+                  fontSize: 18,
+                  textTransform: 'capitalize',
+                  fontWeight: 600,
+                }}>
+                {currentUser.user_name}
+              </p>
+            </div>
+          </AdminNavBar>
+          <AdminContent>
+            <p>hello</p>
+            {children}
+          </AdminContent>
         </AdminContent>
       </AdminContainer>
     )

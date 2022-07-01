@@ -91,3 +91,20 @@ export const LinksButtons = styled.button`
     background: #121212;
   }
 `
+
+export const AdminNavBar = styled.nav`
+  display: flex;
+  padding: 0rem 2rem;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  > div {
+    &:last-child {
+      gap: 1rem;
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto auto;
+    }
+  }
+`
