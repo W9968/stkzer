@@ -53,6 +53,10 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'
             rel='stylesheet'
           />
+          <meta
+            name='google-site-verification'
+            content='LORCoQ2cSbPFl7Pd2rRaTjjBDVtF8FJ9Xwoma7xgMPc'
+          />
         </Head>
         <body>
           <Main />
