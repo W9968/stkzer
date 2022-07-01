@@ -14,7 +14,7 @@ const Header: FC = function () {
         {isLoaggedIn ? (
           <Profile />
         ) : (
-          <Anchor onClick={() => login('github')}>sign in</Anchor>
+          <Anchor onClick={() => login('google')}>sign in</Anchor>
         )}
       </div>
     </StyledHeader>

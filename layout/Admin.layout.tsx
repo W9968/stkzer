@@ -1,8 +1,9 @@
 import Logo from 'modules/logo/Logo'
+import { useRouter } from 'next/router'
 import type { FC, ReactNode } from 'react'
 import { __auth } from 'context/AuthProvider'
 
-import { BiExit, BiCog, BiStats } from 'react-icons/bi'
+import { BiExit, BiCog, BiStats, BiListUl } from 'react-icons/bi'
 import {
   AdminContainer,
   AdminContent,
@@ -14,7 +15,8 @@ import {
   LinksButtons,
   Navbar,
 } from 'theme/app.element'
-import { useRouter } from 'next/router'
+
+import DropDown from 'modules/button/DropDown'
 
 const AdminLayout: FC<ComponentProp> = function ({ children }) {
   const { push, pathname } = useRouter()
@@ -39,6 +41,7 @@ const AdminLayout: FC<ComponentProp> = function ({ children }) {
               />
               <p>overview</p>
             </LinksButtons>
+            <DropDown title={'list'} icon={<BiListUl size={21} />} />
           </AdminSideBarContent>
           {/* footer */}
           <AdminSideBarFooter>
