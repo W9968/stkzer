@@ -80,12 +80,12 @@ export const StyledDropDownContent = styled(motion.div)`
     width: 100%;
     gap: 0.5rem;
     border: none;
-    height: 32px;
+    height: 36px;
     outline: none;
     display: flex;
     cursor: pointer;
     background: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: 0.15rem;
     align-items: center;
     padding: 0rem 0.5rem;

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FC, ReactElement, useEffect, useState } from 'react'
 
@@ -7,12 +8,13 @@ import {
   StyledDropDownContent,
 } from 'theme/button.element'
 
-import { MdKeyboardArrowUp } from 'react-icons/md'
 import { __supabase } from 'hooks/useSupa'
 import { __auth } from 'context/AuthProvider'
+import { MdKeyboardArrowUp, MdAddCircleOutline } from 'react-icons/md'
 
 const DropDown: FC<ComponentProp> = function ({ title, icon }) {
   const { currentUser } = __auth()
+  const { pathname, push } = useRouter()
   const [isOpen, setOpen] = useState<boolean>(false)
   const [isCount, setCount] = useState<number>(0)
   const [isListFetched, setFetchedList] = useState<ListFetchedSupa[]>([])
@@ -34,6 +36,10 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
   useEffect(() => {
     fetchListsOnUserDemand()
   }, []) // eslint-disable-line
+
+  useEffect(() => {
+    pathname.includes('/list') && setOpen(true)
+  }, [pathname])
 
   return (
     <StyledDropDownButton>
@@ -77,6 +83,15 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
             animate={isOpen ? 'open' : 'closed'}
             exit={'closed'}
             variants={animation}>
+            <motion.button
+              variants={children}
+              onClick={() => push('/profile/list')}>
+              <MdAddCircleOutline
+                size={21}
+                color={pathname.includes('/list') ? '#d3f56b' : '#d4d4d8'}
+              />
+              <p>add list</p>
+            </motion.button>
             {isListFetched.map((el: ListFetchedSupa) => {
               return (
                 <motion.button key={el.id} variants={children}>

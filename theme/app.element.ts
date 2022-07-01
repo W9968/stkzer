@@ -68,6 +68,11 @@ export const AdminContent = styled.div`
   flex-direction: column;
 `
 
+export const AdminContentInsider = styled.main`
+  flex: 1;
+  margin: 0rem 2rem;
+`
+
 export const LinksButtons = styled.button`
   width: 100%;
   gap: 0.5rem;

@@ -9,6 +9,7 @@ import { BiExit, BiCog, BiStats, BiListUl } from 'react-icons/bi'
 import {
   AdminContainer,
   AdminContent,
+  AdminContentInsider,
   AdminNavBar,
   AdminSideBar,
   AdminSideBarContent,
@@ -99,10 +100,7 @@ const AdminLayout: FC<ComponentProp> = function ({ children }) {
               </p>
             </div>
           </AdminNavBar>
-          <AdminContent>
-            <p>hello</p>
-            {children}
-          </AdminContent>
+          <AdminContentInsider>{children}</AdminContentInsider>
         </AdminContent>
       </AdminContainer>
     )
