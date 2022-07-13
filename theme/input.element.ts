@@ -29,3 +29,13 @@ export const StyledEditField = styled.input`
     color: ${({ theme }) => theme.palette.accent_600};
   }
 `
+
+export const StyleLabelField = styled.div`
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: ${({ theme }) => theme.palette.accent_400};
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+`

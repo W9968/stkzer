@@ -5,25 +5,31 @@ import styled from 'styled-components'
  * normal button
  */
 
-type StyledButtonProps = {
-  transform: 'CAP' | 'UP'
+export type StyledButtonProps = {
+  color?: string
+  background?: string
+  transform?: 'CAP' | 'UP'
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
+export const StyledButton = styled(motion.button)<StyledButtonProps>`
   flex: 1;
   gap: 0.25rem;
-  height: 42px;
+  height: 36px;
   border: none;
   display: flex;
   outline: none;
   cursor: pointer;
   background: none;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 0px 2.5rem;
   align-items: center;
-  border-radius: 0.35rem;
+  border-radius: 5px;
   justify-content: center;
-  background: ${({ theme }) => theme.palette.accent_050};
+  background: ${({ theme, background }) =>
+    !(background === '') ? background : theme.palette.accent_050};
+
+  color: ${({ theme, color }) =>
+    color ? theme.palette.accent_200 : theme.palette.accent_800};
 
   > p {
     font-weight: 600;

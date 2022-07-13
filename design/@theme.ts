@@ -42,7 +42,7 @@ export const theme: DefaultTheme = {
     accent_500: '#71717a',
     accent_600: '#52525b',
     accent_700: '#3f3f46',
-    accent_800: '#262626',
+    accent_800: '#161616',
     accent_900: '#000000',
   },
 

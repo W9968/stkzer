@@ -37,7 +37,7 @@ const Home: NextPage = () => {
               you can save up all your list from books to cooking recipies, and
               easily keep track of them.
             </HeadingParag>
-
+            <br />
             {isLoggedIn ? (
               <Button
                 title={'get started'}

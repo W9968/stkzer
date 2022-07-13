@@ -1,24 +1,29 @@
 import { FC, ReactElement } from 'react'
-import { StyledButton } from 'theme/button.element'
+import { StyledButton, StyledButtonProps } from 'theme/button.element'
 
 const Button: FC<ComponentProp & Record<string, any>> = function ({
-  title,
   icon,
-  textTransform = 'CAP',
+  title,
+  color = '',
+  background = '',
+  transform = 'CAP',
   ...rest
 }) {
   return (
-    <StyledButton transform={textTransform} {...rest}>
+    <StyledButton
+      color={color}
+      transform={transform}
+      background={background}
+      {...rest}>
       <p>{title}</p>
       {icon}
     </StyledButton>
   )
 }
 
-type ComponentProp = {
+type ComponentProp = StyledButtonProps & {
   title: string
   icon?: ReactElement
-  textTransform?: 'CAP' | 'UP'
 }
 
 export default Button
