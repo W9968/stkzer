@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { BiX } from 'react-icons/bi'
+
 import { AiOutlineGithub, AiOutlineGoogle } from 'react-icons/ai'
 import {
   StyledAuthButton,
@@ -8,17 +8,21 @@ import {
 } from 'theme/auth.element'
 
 import Logo from 'modules/logo/Logo'
+import { useRouter } from 'next/router'
 import { __auth } from 'context/AuthProvider'
+import Link from 'next/link'
+import { Anchor } from 'theme/header.element'
 
-const Auth: FC<ComponentProp> = function ({ func }) {
-  const { login } = __auth()
+const Auth: FC = function () {
+  const { push } = useRouter()
+  const { login, currentUser } = __auth()
+
+  if (currentUser.user_id) {
+    push('/')
+  }
 
   return (
-    <StyledAuthWrapper
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0, opacity: 0 }}
-      transition={{ type: 'tween' }}>
+    <StyledAuthWrapper>
       <div
         style={{
           display: 'flex',
@@ -26,11 +30,9 @@ const Auth: FC<ComponentProp> = function ({ func }) {
           justifyContent: 'space-between',
         }}>
         <Logo />
-        <BiX
-          size={24}
-          style={{ marginLeft: 'auto', cursor: 'pointer' }}
-          onClick={func}
-        />
+        <Link href={'/'} passHref>
+          <Anchor>home</Anchor>
+        </Link>
       </div>
       <StyledAuthContainer>
         <p>
@@ -50,10 +52,6 @@ const Auth: FC<ComponentProp> = function ({ func }) {
       </StyledAuthContainer>
     </StyledAuthWrapper>
   )
-}
-
-type ComponentProp = {
-  func: () => void
 }
 
 export default Auth

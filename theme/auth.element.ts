@@ -1,20 +1,35 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const StyledAuthWrapper = styled(motion.div)`
-  top: 0%;
-  left: 0%;
-  z-index: 10;
+export const StyledAuthRow = styled.main`
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   position: fixed;
   overflow: hidden;
+  flex-direction: row;
+`
+
+export const StyledAuthCol = styled.div`
+  flex: 1;
+
+  :last-child {
+    background: url('/svg/shapes.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+`
+
+export const StyledAuthWrapper = styled(motion.div)`
+  flex: 1;
+  height: 100%;
+  display: flex;
   padding: 2rem 1rem;
   flex-direction: column;
-  transform: translate(-50%, -50%);
   background: ${({ theme }) => theme.palette.accent_900};
-  filter: drop-shadow(0mm 2mm 2mm rgba(25, 25, 25, 0.5));
 `
 
 export const StyledAuthContainer = styled.div`

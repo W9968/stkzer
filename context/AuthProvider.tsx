@@ -17,7 +17,7 @@ type User = {
 
 type StoreContext = {
   currentUser: User
-  isLoaggedIn: boolean
+  isLoggedIn: boolean
   isLoading: boolean
   subscirebdUser: () => void
   login: (service: 'github' | 'google') => void
@@ -32,7 +32,7 @@ const initialStoreValue: StoreContext = {
     user_avatar: undefined,
   },
   isLoading: true,
-  isLoaggedIn: false,
+  isLoggedIn: false,
   subscirebdUser: () => {},
   login: () => {},
   logout: () => {},
@@ -47,8 +47,8 @@ export default function AuthProvider({ children }: ContexProp) {
   const [currentUser, setCurrentUser] = useState<User>(
     initialStoreValue.currentUser
   )
-  const [isLoaggedIn, setLoggedIn] = useState<boolean>(
-    initialStoreValue.isLoaggedIn
+  const [isLoggedIn, setLoggedIn] = useState<boolean>(
+    initialStoreValue.isLoggedIn
   )
 
   const [isLoading, setLoading] = useState<boolean>(initialStoreValue.isLoading)
@@ -125,7 +125,7 @@ export default function AuthProvider({ children }: ContexProp) {
     <AuthContext.Provider
       value={{
         isLoading,
-        isLoaggedIn,
+        isLoggedIn,
         currentUser,
         subscirebdUser,
         login,

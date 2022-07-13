@@ -1,29 +1,26 @@
+import Link from 'next/link'
 import Logo from 'modules/logo/Logo'
-import Auth from 'modules/login/Auth'
 import Profile from 'modules/button/Profile'
 
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { __auth } from 'context/AuthProvider'
 import { Anchor, StyledHeader } from 'theme/header.element'
-import { AnimatePresence } from 'framer-motion'
 
 const Header: FC = function () {
-  const { isLoaggedIn, login } = __auth()
-  const [isOpen, setOpen] = useState<boolean>(false)
+  const { isLoggedIn } = __auth()
 
   return (
     <StyledHeader>
       <Logo />
       <div>
-        {isLoaggedIn ? (
+        {isLoggedIn ? (
           <Profile />
         ) : (
-          <Anchor onClick={() => setOpen(true)}>sign in</Anchor>
+          <Link href={'/auth'} passHref>
+            <Anchor>sign in</Anchor>
+          </Link>
         )}
       </div>
-      <AnimatePresence>
-        {isOpen && <Auth func={() => setOpen(false)} />}
-      </AnimatePresence>
     </StyledHeader>
   )
 }

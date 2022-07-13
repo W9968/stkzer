@@ -23,9 +23,9 @@ import Profile from 'modules/button/Profile'
 
 const AdminLayout: FC<ComponentProp> = function ({ children }) {
   const { push, pathname } = useRouter()
-  const { isLoaggedIn, logout, currentUser } = __auth()
+  const { isLoggedIn, logout, currentUser } = __auth()
 
-  if (!isLoaggedIn) {
+  if (!isLoggedIn) {
     return <p>not logged in</p>
   } else
     return (
