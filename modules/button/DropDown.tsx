@@ -11,31 +11,12 @@ import {
 import { __supabase } from 'hooks/useSupa'
 import { __auth } from 'context/AuthProvider'
 import { MdKeyboardArrowUp, MdAddCircleOutline } from 'react-icons/md'
+import { __data } from 'context/DataProvider'
 
 const DropDown: FC<ComponentProp> = function ({ title, icon }) {
-  const { currentUser } = __auth()
+  const { lists } = __data()
   const { pathname, push } = useRouter()
   const [isOpen, setOpen] = useState<boolean>(false)
-  const [isCount, setCount] = useState<number>(0)
-  const [isListFetched, setFetchedList] = useState<ListFetchedSupa[]>([])
-
-  const fetchListsOnUserDemand = async () => {
-    const { data, error } = await __supabase
-      .from('table_list_type')
-      .select()
-      .match({
-        user_id: currentUser.user_id,
-      })
-      .order('created_at', { ascending: false })
-    if (!error) {
-      setFetchedList(data)
-      setCount(data.length)
-    }
-  }
-
-  useEffect(() => {
-    fetchListsOnUserDemand()
-  }, []) // eslint-disable-line
 
   useEffect(() => {
     pathname.includes('/list') && setOpen(true)
@@ -47,7 +28,7 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
         {icon}
         <p>{title}</p>
 
-        {isCount !== 0 && (
+        {lists.length !== 0 && (
           <div
             style={{
               width: 21,
@@ -60,7 +41,7 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
               justifyContent: 'center',
               background: '#FF3B3B',
             }}>
-            {isCount}
+            {lists.length}
           </div>
         )}
         <motion.div
@@ -70,7 +51,7 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            marginLeft: isCount > 0 ? 0 : 'auto',
+            marginLeft: lists.length > 0 ? 0 : 'auto',
             justifyContent: 'center',
           }}>
           <MdKeyboardArrowUp size={21} />
@@ -85,14 +66,14 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
             variants={animation}>
             <motion.button
               variants={children}
-              onClick={() => push('/profile/list')}>
+              onClick={() => push('/profile/collection')}>
               <MdAddCircleOutline
                 size={21}
-                color={pathname.includes('/list') ? '#d3f56b' : '#d4d4d8'}
+                color={pathname.includes('/collection') ? '#d3f56b' : '#d4d4d8'}
               />
               <p>add list</p>
             </motion.button>
-            {isListFetched.map((el: ListFetchedSupa) => {
+            {lists.map((el: List) => {
               return (
                 <motion.button key={el.id} variants={children}>
                   {el.list_type}
@@ -111,11 +92,11 @@ type ComponentProp = {
   icon: ReactElement
 }
 
-type ListFetchedSupa = {
-  id: number
+type List = {
+  id?: number
   user_id: string
   list_type: string
-  created_at: string
+  created_at: Date
 }
 
 const animation = {

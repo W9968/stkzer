@@ -42,13 +42,13 @@ const Home: NextPage = () => {
               <Button
                 title={'get started'}
                 onClick={() => push('/profile')}
-                textTransform={'UP'}
+                transform={'UP'}
                 icon={<BsArrowRightShort size={24} />}
               />
             ) : (
               <Button
                 title={'get started'}
-                textTransform={'UP'}
+                transform={'UP'}
                 onClick={() => push('/auth')}
                 icon={<BsArrowRightShort size={24} />}
               />

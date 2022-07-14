@@ -13,9 +13,12 @@ export const StyledAuthRow = styled.main`
 `
 
 export const StyledAuthCol = styled.div`
-  flex: 1;
+  &:first-child {
+    width: 40%;
+  }
 
-  :last-child {
+  &:last-child {
+    width: 60%;
     background: url('/svg/shapes.svg');
     background-repeat: no-repeat;
     background-size: cover;

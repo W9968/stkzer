@@ -44,7 +44,7 @@ const AdminLayout: FC<ComponentProp> = function ({ children }) {
               />
               <p>overview</p>
             </LinksButtons>
-            <DropDown title={'list'} icon={<BiListUl size={21} />} />
+            <DropDown title={'collections'} icon={<BiListUl size={21} />} />
           </AdminSideBarContent>
           {/* footer */}
           <AdminSideBarFooter>

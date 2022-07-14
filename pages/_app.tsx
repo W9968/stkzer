@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components'
 import { theme, DesignTheme } from 'design/@theme'
 import { useRouter } from 'next/router'
 import AdminLayout from 'layout/Admin.layout'
+import DataProvider from 'context/DataProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter()
@@ -15,15 +16,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <DesignTheme />
       <AuthProvider>
-        {!pathname.includes('profile') ? (
-          <MainLayout>
-            <Component {...pageProps} />
-          </MainLayout>
-        ) : (
-          <AdminLayout>
-            <Component {...pageProps} />
-          </AdminLayout>
-        )}
+        <DataProvider>
+          {!pathname.includes('profile') ? (
+            <MainLayout>
+              <Component {...pageProps} />
+            </MainLayout>
+          ) : (
+            <AdminLayout>
+              <Component {...pageProps} />
+            </AdminLayout>
+          )}
+        </DataProvider>
       </AuthProvider>
     </ThemeProvider>
   )
