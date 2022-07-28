@@ -1,15 +1,10 @@
 import styled from 'styled-components'
 
 export const StyledHeader = styled.div`
-  width: 1200px;
   display: flex;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-
-  @media (max-width: 1200px) {
-    width: 100%;
-  }
 `
 
 export const Anchor = styled.button`

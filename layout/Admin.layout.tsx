@@ -22,7 +22,7 @@ import DropDown from 'modules/button/DropDown'
 import Profile from 'modules/button/Profile'
 
 const AdminLayout: FC<ComponentProp> = function ({ children }) {
-  const { push, pathname } = useRouter()
+  const { push, pathname, asPath } = useRouter()
   const { isLoggedIn, logout, currentUser } = __auth()
 
   if (!isLoggedIn) {
@@ -85,7 +85,7 @@ const AdminLayout: FC<ComponentProp> = function ({ children }) {
                   alignItems: 'center',
                 }}>
                 <BsDot size={21} />
-                <p>{pathname.slice(1)}</p>
+                <p>{asPath.slice(1)}</p>
               </div>
             </div>
             <div>

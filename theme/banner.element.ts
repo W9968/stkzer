@@ -5,10 +5,9 @@ export const Banner = styled.div`
   width: 1200px;
   display: flex;
   margin: 0 auto;
-  margin-top: -5%;
   justify-content: space-between;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1250px) {
     width: 100%;
   }
 

@@ -19,7 +19,6 @@ const Index: NextPage = () => {
 
   const columns = useMemo(
     () => [
-      { Header: '#', accessor: 'id' },
       { Header: 'collection', accessor: 'list_type' },
       { Header: 'created', accessor: 'created_at' },
     ],

@@ -12,6 +12,7 @@ import { __supabase } from 'hooks/useSupa'
 import { __auth } from 'context/AuthProvider'
 import { MdKeyboardArrowUp, MdAddCircleOutline } from 'react-icons/md'
 import { __data } from 'context/DataProvider'
+import Link from 'next/link'
 
 const DropDown: FC<ComponentProp> = function ({ title, icon }) {
   const { lists } = __data()
@@ -75,9 +76,14 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
             </motion.button>
             {lists.map((el: List) => {
               return (
-                <motion.button key={el.id} variants={children}>
-                  {el.list_type}
-                </motion.button>
+                <Link
+                  key={el.id}
+                  href={`/profile/collection/${el.list_type}`}
+                  passHref>
+                  <motion.button variants={children}>
+                    {el.list_type}
+                  </motion.button>
+                </Link>
               )
             })}
           </StyledDropDownContent>

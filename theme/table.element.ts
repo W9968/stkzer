@@ -23,8 +23,7 @@ export const TableHead = styled.th`
   color: ${({ theme }) => theme.palette.accent_500};
   background: ${({ theme }) => theme.palette.accent_800};
 
-  &:first-child,
-  &:nth-child(2) {
+  &:first-child {
     text-align: start;
   }
 `
@@ -37,8 +36,7 @@ export const TableData = styled.td`
   color: ${({ theme }) => theme.palette.accent_300};
   border-top: 1px solid ${({ theme }) => theme.palette.accent_800};
 
-  &:first-child,
-  &:nth-child(2) {
+  &:first-child {
     text-align: start;
   }
 `
