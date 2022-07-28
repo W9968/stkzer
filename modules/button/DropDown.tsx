@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FC, ReactElement, useEffect, useState } from 'react'
@@ -75,9 +76,14 @@ const DropDown: FC<ComponentProp> = function ({ title, icon }) {
             </motion.button>
             {lists.map((el: List) => {
               return (
-                <motion.button key={el.id} variants={children}>
-                  {el.list_type}
-                </motion.button>
+                <Link
+                  key={el.id}
+                  href={`/profile/collection/${el.list_type}`}
+                  passHref>
+                  <motion.button variants={children}>
+                    {el.list_type}
+                  </motion.button>
+                </Link>
               )
             })}
           </StyledDropDownContent>

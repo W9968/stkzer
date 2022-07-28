@@ -19,7 +19,6 @@ const Index: NextPage = () => {
 
   const columns = useMemo(
     () => [
-      { Header: '#', accessor: 'id' },
       { Header: 'collection', accessor: 'list_type' },
       { Header: 'created', accessor: 'created_at' },
     ],
@@ -40,7 +39,7 @@ const Index: NextPage = () => {
             display: 'grid',
             alignItems: 'flex-end',
             justifyContent: 'center',
-            gridTemplateColumns: '1fr auto',
+            gridTemplateColumns: '1fr 100px',
           }}>
           <Input
             type={'text'}
@@ -69,15 +68,17 @@ const Index: NextPage = () => {
           />
         </div>
 
-        <DataTable
-          columns={columns}
-          data={lists.map((obj) => {
-            return {
-              ...obj,
-              created_at: moment(obj.created_at).format('ll'),
-            }
-          })}
-        />
+        {lists.length !== 0 && (
+          <DataTable
+            columns={columns}
+            data={lists.map((obj) => {
+              return {
+                ...obj,
+                created_at: moment(obj.created_at).format('ll'),
+              }
+            })}
+          />
+        )}
       </StyledDash>
     </>
   )

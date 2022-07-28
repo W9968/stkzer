@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useTable } from 'react-table'
 import { Table, TableData, TableHead, TableWrapper } from 'theme/table.element'
 
-import { BiTrashAlt } from 'react-icons/bi'
+import { BiTrashAlt, BiEditAlt } from 'react-icons/bi'
 import { __data } from 'context/DataProvider'
 
 const DataTable: FC<ComponentProp> = function ({ data, columns }) {
@@ -15,11 +15,17 @@ const DataTable: FC<ComponentProp> = function ({ data, columns }) {
         {
           id: 'action',
           Cell: ({ row }) => (
-            <BiTrashAlt
-              size={18}
-              style={{ marginLeft: 5, cursor: 'pointer' }}
-              onClick={() => deleteData('table_list_type', row.values.id)}
-            />
+            <>
+              <BiEditAlt
+                size={18}
+                style={{ marginLeft: 5, cursor: 'pointer' }}
+              />
+              <BiTrashAlt
+                size={18}
+                style={{ marginLeft: 5, cursor: 'pointer' }}
+                onClick={() => deleteData('table_list_type', row.values.id)}
+              />
+            </>
           ),
         },
       ])
