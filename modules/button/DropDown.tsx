@@ -13,6 +13,7 @@ import { __supabase } from 'hooks/useSupa'
 import { __auth } from 'context/AuthProvider'
 import { MdKeyboardArrowUp, MdAddCircleOutline } from 'react-icons/md'
 import { __data } from 'context/DataProvider'
+import Link from 'next/link'
 
 const DropDown: FC<ComponentProp> = function ({ title, icon }) {
   const { lists } = __data()
