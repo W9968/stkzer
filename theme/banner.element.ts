@@ -11,7 +11,7 @@ export const Banner = styled.div`
     width: 100%;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     margin-top: 15%;
     flex-direction: column;
   }
@@ -19,6 +19,8 @@ export const Banner = styled.div`
 
 export const Column = styled(motion.div)`
   display: grid;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: auto auto;
 
   &:first-child {
@@ -30,7 +32,7 @@ export const Column = styled(motion.div)`
     justify-content: flex-start;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 769px) {
     gap: 0rem;
 
     &:first-child {
@@ -48,7 +50,7 @@ export const Column = styled(motion.div)`
 `
 
 export const HeadingTitle = styled.h1`
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 4.5rem);
   text-transform: capitalize;
 
   @media (max-width: 750px) {
@@ -57,8 +59,8 @@ export const HeadingTitle = styled.h1`
 `
 
 export const HeadingParag = styled.p`
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   margin: 1rem 0rem;
-  line-height: 1.5rem;
+  line-height: clamp(1.5rem, 1.5vw, 1.7rem);
   color: ${({ theme }) => theme.palette.accent_200};
 `
